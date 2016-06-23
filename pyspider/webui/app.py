@@ -82,10 +82,17 @@ class QuitableFlask(Flask):
         tornado.ioloop.IOLoop.current().stop()
         self.logger.info('webui exiting...')
 
+def __getfolder( key ):
+    appfilename = os.path.abspath(__file__)
+    dirname = os.path.dirname(appfilename)
+    ret = os.path.join(dirname, key)
+    print appfilename,dirname,ret
+    return ret
+
 
 app = QuitableFlask('webui',
-                    static_folder=os.path.join(os.path.dirname(__file__), 'static'),
-                    template_folder=os.path.join(os.path.dirname(__file__), 'templates'))
+                    static_folder=__getfolder('static'),
+                    template_folder=__getfolder('templates'))
 app.secret_key = os.urandom(24)
 app.jinja_env.line_statement_prefix = '#'
 app.jinja_env.globals.update(builtins.__dict__)
