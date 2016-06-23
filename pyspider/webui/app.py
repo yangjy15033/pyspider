@@ -86,7 +86,7 @@ def __getfolder( key ):
     appfilename = os.path.abspath(__file__)
     dirname = os.path.dirname(appfilename)
     ret = os.path.join(dirname, key)
-    print appfilename,dirname,ret
+   # print appfilename,dirname,ret
     return ret
 
 
