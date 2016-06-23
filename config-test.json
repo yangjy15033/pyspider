@@ -1,0 +1,10 @@
+{
+  "resultdb": "elasticsearch+resultdb://localhost:9200/resultdb",
+  "taskdb": "redis+taskdb://localhost:6379/",
+  "message_queue": "redis://localhost:6379/db",
+  "webui": {
+    "username": "yangjy",
+    "password": "yangjy",
+    "need-auth": true
+  }
+}

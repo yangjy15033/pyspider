@@ -483,10 +483,12 @@ def all(ctx, fetcher_num, processor_num, result_worker_num, run_in):
         scheduler_config.setdefault('xmlrpc_host', '127.0.0.1')
         threads.append(run_in(ctx.invoke, scheduler, **scheduler_config))
 
+
         # running webui in main thread to make it exitable
         webui_config = g.config.get('webui', {})
         webui_config.setdefault('scheduler_rpc', 'http://127.0.0.1:%s/'
-                                % g.config.get('scheduler', {}).get('xmlrpc_port', 23333))
+                               % g.config.get('scheduler', {}).get('xmlrpc_port', 23333))
+        time.sleep(2)
         ctx.invoke(webui, **webui_config)
     finally:
         # exit components run in threading
@@ -734,9 +736,10 @@ def send_message(ctx, scheduler_rpc, project, message):
         }
     })
 
+import sys;
 
 def main():
-    cli()
+    cli(sys.argv[1:])
 
 if __name__ == '__main__':
     main()

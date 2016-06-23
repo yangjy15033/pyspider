@@ -269,7 +269,8 @@ window.Debugger = (function() {
         indentUnit: 4,
         lineWrapping: true,
         styleActiveLine: true,
-        autofocus: true
+        autofocus: true,
+        lineNumbers: true
       });
       cm.on('focus', function() {
         $el.addClass("focus");

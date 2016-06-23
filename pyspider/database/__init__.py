@@ -153,5 +153,9 @@ def _connect_database(url):  # NOQA
             return ProjectDB(scripts)
         else:
             raise LookupError('not supported dbtype: %s', dbtype)
+    elif engine == 'elasticsearch':
+        if dbtype == 'resultdb':
+            from .elasticsearch.resultdb import ResultDB
+            return ResultDB(url)
     else:
         raise Exception('unknown engine: %s' % engine)
