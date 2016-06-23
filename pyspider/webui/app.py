@@ -84,8 +84,8 @@ class QuitableFlask(Flask):
 
 
 app = QuitableFlask('webui',
-                    static_folder= 'static',
-                    template_folder= 'templates')
+                    static_folder=os.path.join(os.path.dirname(__file__), 'static'),
+                    template_folder=os.path.join(os.path.dirname(__file__), 'templates'))
 app.secret_key = os.urandom(24)
 app.jinja_env.line_statement_prefix = '#'
 app.jinja_env.globals.update(builtins.__dict__)

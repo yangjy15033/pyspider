@@ -3,6 +3,7 @@
   "taskdb": "redis+taskdb://localhost:6379/",
   "message_queue": "redis://localhost:6379/db",
   "webui": {
+    "port" : 8015,
     "username": "yangjy",
     "password": "yangjy",
     "need-auth": true
