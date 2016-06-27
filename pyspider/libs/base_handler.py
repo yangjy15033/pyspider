@@ -282,7 +282,8 @@ class BaseHandler(object):
                 'fetch_type',
                 'use_gzip',
                 'validate_cert',
-                'max_redirects'
+                'max_redirects',
+                'js_param'
         ):
             if key in kwargs:
                 fetch[key] = kwargs.pop(key)

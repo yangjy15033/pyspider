@@ -13,6 +13,8 @@ import time
 import json
 import logging
 import threading
+
+import subprocess
 import tornado.ioloop
 import tornado.httputil
 import tornado.httpclient
@@ -108,7 +110,7 @@ class Fetcher(object):
             callback = self.send_result
         if url.startswith('data:'):
             return self.data_fetch(url, task, callback)
-        elif task.get('fetch', {}).get('fetch_type') in ('js', 'phantomjs'):
+        elif task.get('fetch', {}).get('fetch_type') in ('js', 'phantomjs',"pagejs"):
             return self.phantomjs_fetch(url, task, callback)
         else:
             return self.http_fetch(url, task, callback)
@@ -335,6 +337,7 @@ class Fetcher(object):
                 return handle_error(e)
 
         return make_request(fetch)
+
 
     def phantomjs_fetch(self, url, task, callback):
         '''Fetch with phantomjs proxy'''

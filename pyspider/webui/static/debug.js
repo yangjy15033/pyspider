@@ -494,7 +494,7 @@ window.Debugger = (function() {
           task: task
         },
         success: function(data) {
-          console.log(data);
+          //console.log(data);
           $('#left-area .overlay').hide();
 
           //web
